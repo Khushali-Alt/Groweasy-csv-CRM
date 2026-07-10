@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color-scheme: dark;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+body {
+  background-color: #0f1c1b;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(227, 167, 59, 0.08), transparent),
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.035) 1px, transparent 0);
+  background-size: auto, 22px 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Perforated tear-edge used on manifest cards */
+.tear-edge {
+  --r: 7px;
+  mask-image: radial-gradient(circle at var(--r) var(--r), transparent var(--r), black calc(var(--r) + 0.5px));
+  mask-size: calc(var(--r) * 2) calc(var(--r) * 2);
+  mask-repeat: repeat-x;
+  mask-position: -3px top;
+}
+
+.stamp-in {
+  animation: stampDown 260ms cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
+}
+
+@keyframes stampDown {
+  0% {
+    opacity: 0;
+    transform: scale(2.2) rotate(var(--stamp-rot, -8deg));
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(var(--stamp-rot, -8deg));
+  }
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #d8d2bf;
+  border-radius: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background-color: transparent;
+}
